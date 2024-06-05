@@ -13,18 +13,21 @@ struct MockData{
     static let users: [UserModel] = [
         .init(
             id: NSUUID().uuidString,
-            fullname:"Syam Shukla",
-            profileImageURL: []
+            email: "shuklasyam13@gmail.com",
+            fullname: "Syam Shukla",
+            profileImageURL: ""
         ),
         .init(
             id: NSUUID().uuidString,
-            fullname:"User2",
-            profileImageURL: []
+            email: "shuklasyam13@gmail.com",
+            fullname: "User2",
+            profileImageURL: ""
         ),
         .init(
             id: NSUUID().uuidString,
-            fullname:"User3",
-            profileImageURL: []
+            email: "shuklasyam13@gmail.com",
+            fullname: "User3",
+            profileImageURL: ""
         )
     ]
     

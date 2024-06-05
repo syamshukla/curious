@@ -10,33 +10,55 @@ import SwiftData
 
 
 struct MainTabView: View {
-
-    @State private var showSignInView: Bool = false
+    @Binding var showSignInView: Bool
+    @State private var user: UserModel? = nil
+    
     var body: some View {
-        
-        TabView{
+        TabView {
             CardStackView()
-                .tabItem{
-                    Label("Home", systemImage:"brain")
+                .tabItem {
+                    Label("Home", systemImage: "brain")
                 }
                 .tag(0)
             Text("Search View")
-                .tabItem{
-                    Label("Search", systemImage:"magnifyingglass")
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
                 }
                 .tag(1)
-//            Text("Profile View")
-            UserProfileView(showSignInView: $showSignInView)
-                .tabItem {
-                    Label("Profile", systemImage:"person")}
-                .tag(2)
+            if let user = user {
+                UserProfileView(user: user, showSignInView: $showSignInView)
+                    .tabItem {
+                        Label("Profile", systemImage: "person")
+                    }
+                    .tag(2)
+            } else {
+                Text("Loading...")
+                    .tabItem {
+                        Label("Profile", systemImage: "person")
+                    }
+                    .tag(2)
+            }
         }
-        
+        .onAppear {
+            Task {
+                user = await fetchUser()
+            }
+        }
         .tint(.orange)
-
     }
+    
+    func fetchUser() async -> UserModel? {
+            do {
+                let authUser = try AuthenticationManager.shared.getAuthenticatedUser()
+                // Placeholder for fetching additional user data if needed
+                return UserModel(id: authUser.uid, email: authUser.email, fullname: authUser.email ?? "Unknown", profileImageURL: authUser.photoUrl)
+            } catch {
+                print("Error fetching authenticated user: \(error)")
+                return nil
+            }
+        }
 }
-//AIzaSyA3S-gPVgsMGYRFpcvvGGO9NB5pueNwvT8
+
 #Preview {
-    MainTabView()
+    MainTabView(showSignInView: .constant(false))
 }

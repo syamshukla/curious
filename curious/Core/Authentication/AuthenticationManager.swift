@@ -1,15 +1,11 @@
-//
-//  AuthenticationManager.swift
-//  curious
-//
-//  Created by Syam Shukla on 6/5/24.
-//
-
 import Foundation
 import FirebaseAuth
 
+extension Notification.Name {
+    static let didSignIn = Notification.Name("didSignIn")
+}
 
-struct AuthDataResultModel{
+struct AuthDataResultModel {
     let uid: String
     let email: String?
     let photoUrl: String?
@@ -20,6 +16,7 @@ struct AuthDataResultModel{
         self.photoUrl = user.photoURL?.absoluteString
     }
 }
+
 final class AuthenticationManager {
     static let shared = AuthenticationManager()
     
@@ -27,11 +24,12 @@ final class AuthenticationManager {
     
     func createUser(email: String, password: String) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        NotificationCenter.default.post(name: .didSignIn, object: nil)
         return AuthDataResultModel(user: authDataResult.user)
-        
     }
+    
     func getAuthenticatedUser() throws -> AuthDataResultModel {
-        guard let user = Auth.auth().currentUser else{
+        guard let user = Auth.auth().currentUser else {
             throw URLError(.badServerResponse)
         }
         return AuthDataResultModel(user: user)
@@ -40,5 +38,10 @@ final class AuthenticationManager {
     func signOut() throws {
         try Auth.auth().signOut()
     }
+    
+    func signIn(email: String, password: String) async throws -> AuthDataResultModel {
+        let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
+        NotificationCenter.default.post(name: .didSignIn, object: nil)
+        return AuthDataResultModel(user: authDataResult.user)
+    }
 }
-

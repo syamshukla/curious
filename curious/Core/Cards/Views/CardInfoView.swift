@@ -13,7 +13,7 @@ struct CardInfoView: View {
     var body: some View {
         VStack {
             HStack{
-                Text(user.fullname)
+                Text(user.fullname ?? "NAME")
                     .font(.title)
                     .fontWeight(.heavy)
                     .foregroundColor(Color(UIColor.systemBackground))

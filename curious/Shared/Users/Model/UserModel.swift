@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct UserModel: Identifiable, Hashable{
+struct UserModel: Identifiable, Hashable {
     let id: String
-    let fullname: String
-    var profileImageURL: [String]
-    
+    var email: String?
+    var fullname: String?
+    var profileImageURL: String?
 }

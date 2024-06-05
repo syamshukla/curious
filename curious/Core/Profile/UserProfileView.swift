@@ -21,22 +21,24 @@ struct UserProfileView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @Binding var showSignInView: Bool
     var body: some View {
-        List {
-            Button("Log Out"){
-                Task {
-                    do {
-                        try viewModel.signOut()
-                        showSignInView = true
-                    } catch {
-                        print(error)
+        NavigationStack{
+            List {
+                Button("Log Out"){
+                    Task {
+                        do {
+                            try viewModel.signOut()
+                            showSignInView = true
+                        } catch {
+                            print(error)
+                        }
                     }
                 }
             }
+            .navigationBarTitle("Settings")
         }
-        .navigationBarTitle("Settings")
     }
 }
 
 #Preview {
-    UserProfileView(user: MockData[0], showSignInView: .constant(false))
+    UserProfileView(user: MockData.users[0], showSignInView: .constant(false))
 }

@@ -1,10 +1,3 @@
-//
-//  RootView.swift
-//  curious
-//
-//  Created by Syam Shukla on 6/5/24.
-//
-
 import SwiftUI
 
 struct RootView: View {
@@ -12,17 +5,19 @@ struct RootView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack{
-                MainTabView()
+            NavigationStack {
+                MainTabView(showSignInView: $showSignInView)
             }
         }
-        .onAppear{
+        .onAppear {
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
             self.showSignInView = authUser == nil
-            
+            NotificationCenter.default.addObserver(forName: .didSignIn, object: nil, queue: .main) { _ in
+                self.showSignInView = false
+            }
         }
-        .fullScreenCover(isPresented: $showSignInView){
-            NavigationStack{
+        .fullScreenCover(isPresented: $showSignInView) {
+            NavigationStack {
                 LoginView()
             }
         }
