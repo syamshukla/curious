@@ -63,6 +63,7 @@
 		222AC29E2C0FAB780013F22E /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		222AC2A52C10BC220013F22E /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
 		222AC2A72C10C4590013F22E /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		223D122C2C1230BC0064E6FD /* curious.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = curious.entitlements; sourceTree = "<group>"; };
 		22476CC42C0ECE60005A86CF /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		22476CC72C0ED4C9005A86CF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		22476CC92C0ED7D6005A86CF /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
@@ -121,6 +122,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		223D122D2C12685C0064E6FD /* CloudFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				223D122E2C12686A0064E6FD /* Functions */,
+			);
+			path = CloudFunctions;
+			sourceTree = "<group>";
+		};
+		223D122E2C12686A0064E6FD /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		22476CBB2C0ECDC5005A86CF /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +335,8 @@
 		228BD21F2BFECC1B003FC201 /* curious */ = {
 			isa = PBXGroup;
 			children = (
+				223D122D2C12685C0064E6FD /* CloudFunctions */,
+				223D122C2C1230BC0064E6FD /* curious.entitlements */,
 				22476CF02C0FA3A3005A86CF /* GoogleService-Info.plist */,
 				22476CBF2C0ECDE7005A86CF /* Shared */,
 				22476CBE2C0ECDDF005A86CF /* Utils */,
@@ -679,6 +697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = curious/curious.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -710,6 +729,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = curious/curious.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

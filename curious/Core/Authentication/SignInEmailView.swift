@@ -34,6 +34,7 @@ final class SignInEmailViewModel: ObservableObject{
 
 struct SignInEmailView: View {
     @StateObject private var viewModel = SignInEmailViewModel()
+    @State private var signInSuccess = false
     var body: some View {
         
         VStack{
@@ -41,7 +42,7 @@ struct SignInEmailView: View {
                 .padding()
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(10)
-            SecureField("Password...", text: $viewModel.email)
+            SecureField("Password...", text: $viewModel.password)
                 .padding()
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(10)
@@ -58,10 +59,23 @@ struct SignInEmailView: View {
                     .background(Color.blue)
                     .cornerRadius(10)
             }
+            .padding()
             Spacer()
         }
         .padding()
         .navigationTitle("Sign in With Email")
+        .onChange(of: signInSuccess) { newValue, oldValue in
+            if newValue {
+                signInSuccess = false // Reset the state after navigation
+            }
+        }
+        .background(
+            NavigationLink(
+                destination: UserProfileView(user: UserModel(id: "1", email: viewModel.email, fullname: "John Doe", profileImageURL: nil), showSignInView: $signInSuccess),
+                isActive: $signInSuccess,
+                label: { EmptyView() }
+            ).hidden()
+        )
     }
 }
 

@@ -17,10 +17,17 @@ struct AuthDataResultModel {
     }
 }
 
-final class AuthenticationManager {
+final class AuthenticationManager: ObservableObject {
     static let shared = AuthenticationManager()
-    
-    private init() { }
+    @Published var isSignedIn: Bool = false
+    private init() { let authUser = try? getAuthenticatedUser()
+        self.isSignedIn = authUser != nil
+        
+        // Listen for authentication state changes
+        Auth.auth().addStateDidChangeListener { _, user in
+            self.isSignedIn = user != nil
+        }
+    }
     
     func createUser(email: String, password: String) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)

@@ -25,19 +25,12 @@ struct MainTabView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
                 .tag(1)
-            if let user = user {
-                UserProfileView(user: user, showSignInView: $showSignInView)
-                    .tabItem {
-                        Label("Profile", systemImage: "person")
-                    }
-                    .tag(2)
-            } else {
-                Text("Loading...")
-                    .tabItem {
-                        Label("Profile", systemImage: "person")
-                    }
-                    .tag(2)
-            }
+            UserProfileView(user: user ?? MockData.users[1], showSignInView: $showSignInView)
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
+                .tag(2)
+
         }
         .onAppear {
             Task {
