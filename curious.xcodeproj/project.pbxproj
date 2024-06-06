@@ -14,6 +14,9 @@
 		222AC2A42C10B9C90013F22E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 222AC2A32C10B9C90013F22E /* FirebaseAnalyticsSwift */; };
 		222AC2A62C10BC220013F22E /* SignInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AC2A52C10BC220013F22E /* SignInEmailView.swift */; };
 		222AC2A82C10C4590013F22E /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AC2A72C10C4590013F22E /* AuthenticationManager.swift */; };
+		223D12302C126F3B0064E6FD /* FactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D122F2C126F3B0064E6FD /* FactModel.swift */; };
+		223D12332C126F700064E6FD /* GeminiAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12322C126F700064E6FD /* GeminiAPIHelper.swift */; };
+		223D12362C1271530064E6FD /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 223D12352C1271530064E6FD /* GoogleGenerativeAI */; };
 		22476CC52C0ECE60005A86CF /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22476CC42C0ECE60005A86CF /* MainTabView.swift */; };
 		22476CC82C0ED4C9005A86CF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22476CC72C0ED4C9005A86CF /* CardView.swift */; };
 		22476CCA2C0ED7D6005A86CF /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22476CC92C0ED7D6005A86CF /* CardInfoView.swift */; };
@@ -64,6 +67,8 @@
 		222AC2A52C10BC220013F22E /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
 		222AC2A72C10C4590013F22E /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		223D122C2C1230BC0064E6FD /* curious.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = curious.entitlements; sourceTree = "<group>"; };
+		223D122F2C126F3B0064E6FD /* FactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModel.swift; sourceTree = "<group>"; };
+		223D12322C126F700064E6FD /* GeminiAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAPIHelper.swift; sourceTree = "<group>"; };
 		22476CC42C0ECE60005A86CF /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		22476CC72C0ED4C9005A86CF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		22476CC92C0ED7D6005A86CF /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
@@ -100,6 +105,7 @@
 				22476CF52C0FA491005A86CF /* FirebaseAuth in Frameworks */,
 				222AC29C2C0FAA5E0013F22E /* FirebaseAppCheck in Frameworks */,
 				222AC2A22C10B9C00013F22E /* FirebaseAnalytics in Frameworks */,
+				223D12362C1271530064E6FD /* GoogleGenerativeAI in Frameworks */,
 				22476CF72C0FA49E005A86CF /* FirebaseFirestore in Frameworks */,
 				222AC2A42C10B9C90013F22E /* FirebaseAnalyticsSwift in Frameworks */,
 			);
@@ -257,6 +263,7 @@
 			children = (
 				22476CD72C0EE478005A86CF /* CardModel.swift */,
 				22476CE82C0F9C48005A86CF /* SwipeAction.swift */,
+				223D122F2C126F3B0064E6FD /* FactModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				22476CDD2C0EE53C005A86CF /* CardService.swift */,
+				223D12322C126F700064E6FD /* GeminiAPIHelper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -397,6 +405,7 @@
 				222AC29B2C0FAA5E0013F22E /* FirebaseAppCheck */,
 				222AC2A12C10B9C00013F22E /* FirebaseAnalytics */,
 				222AC2A32C10B9C90013F22E /* FirebaseAnalyticsSwift */,
+				223D12352C1271530064E6FD /* GoogleGenerativeAI */,
 			);
 			productName = curious;
 			productReference = 228BD21D2BFECC1B003FC201 /* curious.app */;
@@ -472,6 +481,7 @@
 			mainGroup = 228BD2142BFECC1B003FC201;
 			packageReferences = (
 				22476CF22C0FA407005A86CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				223D12342C1270510064E6FD /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 			);
 			productRefGroup = 228BD21E2BFECC1B003FC201 /* Products */;
 			projectDirPath = "";
@@ -524,6 +534,7 @@
 				22476CDB2C0EE4D1005A86CF /* CardsViewModel.swift in Sources */,
 				228BD2232BFECC1B003FC201 /* ContentView.swift in Sources */,
 				22476CC82C0ED4C9005A86CF /* CardView.swift in Sources */,
+				223D12332C126F700064E6FD /* GeminiAPIHelper.swift in Sources */,
 				22476CE52C0F9653005A86CF /* SwipeActionButtonsView.swift in Sources */,
 				22476CD52C0EE425005A86CF /* UserModel.swift in Sources */,
 				22476CDE2C0EE53C005A86CF /* CardService.swift in Sources */,
@@ -537,6 +548,7 @@
 				22476CCA2C0ED7D6005A86CF /* CardInfoView.swift in Sources */,
 				22476CD82C0EE478005A86CF /* CardModel.swift in Sources */,
 				22476CE92C0F9C48005A86CF /* SwipeAction.swift in Sources */,
+				223D12302C126F3B0064E6FD /* FactModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +882,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		223D12342C1270510064E6FD /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
 		22476CF22C0FA407005A86CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -895,6 +915,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22476CF22C0FA407005A86CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		223D12352C1271530064E6FD /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223D12342C1270510064E6FD /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
 		};
 		22476CF42C0FA491005A86CF /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

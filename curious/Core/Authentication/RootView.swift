@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var showSignInView: Bool = false
-    @EnvironmentObject var authManager: AuthenticationManager
+    @StateObject var authManager = AuthenticationManager.shared // Declare it here
+    @State private var showSignInView = false
 //    var body: some View {
 //        ZStack {
 //            NavigationStack {
@@ -28,8 +28,10 @@ struct RootView: View {
                 NavigationStack {
                     if authManager.isSignedIn {
                         MainTabView(showSignInView: $showSignInView)
+                            .environmentObject(authManager) // Inject here
                     } else {
                         LoginView()
+                            .environmentObject(authManager) // Inject here as well
                     }
                 }
             }

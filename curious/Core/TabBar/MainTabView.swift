@@ -20,11 +20,11 @@ struct MainTabView: View {
                     Label("Home", systemImage: "brain")
                 }
                 .tag(0)
-            Text("Search View")
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-                .tag(1)
+//            Text("Search View")
+//                .tabItem {
+//                    Label("Search", systemImage: "magnifyingglass")
+//                }
+//                .tag(1)
             UserProfileView(user: user ?? MockData.users[1], showSignInView: $showSignInView)
                 .tabItem {
                     Label("Profile", systemImage: "person")

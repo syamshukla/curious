@@ -7,9 +7,26 @@
 
 import Foundation
 
-struct CardService{
+struct CardService {
+    let apiHelper = GeminiAPIHelper()
+
     func fetchCardModels() async throws -> [CardModel] {
-        let users = MockData.users
-        return users.map({CardModel(user:$0)})
+        // Fetch facts from Gemini API
+        let facts = try await withCheckedThrowingContinuation { continuation in
+            apiHelper.fetchFacts { facts, error in
+                if let facts = facts {
+                    continuation.resume(returning: facts)
+                } else if let error = error {
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+
+        // Create CardModels with the fetched facts
+        let cardModels = facts.map { fact in
+            CardModel(facts: [fact])
+        }
+
+        return cardModels
     }
 }

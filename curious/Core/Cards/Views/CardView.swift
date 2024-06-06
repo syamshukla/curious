@@ -10,24 +10,27 @@ import SwiftUI
 struct CardView: View {
     @ObservedObject var viewModel: CardsViewModel
     @State private var xOffset: CGFloat = 0
-    
     @State private var degrees: Double = 0
-    
-    let model: CardModel
+
+    let model: CardModel // Use CardModel, not FactModel
+
     var body: some View {
-        ZStack(){
-            ZStack(alignment:.top){
+        ZStack {
+            ZStack(alignment: .top) {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(.primary)  // Set the background color to .secondary
+                    .fill(.primary)
                 SwipeActionIndicatorView(xOffset: $xOffset)
             }
-            CardInfoView( user:user)
-                .padding(.horizontal)
-        }
 
-        .onReceive(viewModel.$buttonSwipeAction, perform: { action in
+            // Iterate over the facts within the CardModel
+            ForEach(model.facts) { fact in
+                CardInfoView(viewModel: viewModel, fact: fact) // Remove the assignment
+                    .padding(.horizontal)
+            } 
+        }
+        .onReceive(viewModel.$buttonSwipeAction) { action in
             onRecieveSwipeAction(action)
-        })
+        }
         .frame(width: SizeConstants.cardWidth, height: SizeConstants.cardHeight)
         .offset(x: xOffset)
         .rotationEffect(.degrees(degrees))
@@ -38,15 +41,16 @@ struct CardView: View {
                 .onEnded(onDragEnded)
         )
     }
+
 }
 
-private extension CardView{
-    var user: UserModel{
-        return model.user
-    }
-    
-    
-}
+//private extension CardView{
+//    var user: CardModel{
+//        return model.facts
+//    }
+//    
+//    
+//}
 private extension CardView{
     func returnToCenter(){
         xOffset = 0
@@ -108,10 +112,8 @@ private extension CardView{
 #Preview {
     CardView(
         viewModel: CardsViewModel(
-            service:CardService()
+            service: CardService()
         ),
-        model:CardModel(
-            user: MockData.users[0]
-        )
+        model: CardModel(facts: [FactModel(text: "This is a sample fact.")])
     )
 }
